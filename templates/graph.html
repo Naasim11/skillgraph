@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Graph Explorer · SkillGraph</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>SkillGraph</h1>
+        <p>Graph relationship explorer</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <a class="back" href="{{ url_for('home') }}">
+        ← Back to dashboard
+    </a>
+
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            GRAPH EXPLORER
+        </p>
+
+        <h2>
+            {{ skill_name }} Network
+        </h2>
+
+        <p>
+            Explore jobs and skills connected through the graph.
+        </p>
+
+    </section>
+
+    {% for graph in graph_data %}
+
+    <section class="section">
+
+        <h2>Connected Jobs</h2>
+
+        <div class="job-grid">
+
+            {% for job in graph.jobs %}
+
+            <article class="job-card">
+
+                <h3>
+                    {{ job.name }}
+                </h3>
+
+                <span class="skill secondary">
+                    Job
+                </span>
+
+                <p>
+                    Requires {{ skill_name }}
+                </p>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>Related Skills</h2>
+
+        <div class="skills">
+
+            {% for skill in graph.related_skills %}
+
+                <a
+                    class="skill secondary"
+                    href="{{ url_for('skill_details', skill_name=skill.name) }}"
+                >
+                    {{ skill.name }}
+                </a>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% else %}
+
+        <div class="error">
+            No graph relationships found.
+        </div>
+
+    {% endfor %}
+
+</main>
+
+<footer>
+    <p>SkillGraph · Powered by CognoDB</p>
+</footer>
+
+</body>
+</html>

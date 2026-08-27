@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ skill_name }} · SkillGraph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>SkillGraph</h1>
+        <p>Explore skill relationships</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <a class="back" href="{{ url_for('home') }}">← Back to dashboard</a>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <section class="hero">
+        <p class="eyebrow">SKILL CONNECTIONS</p>
+        <h2>{{ skill_name }}</h2>
+        <p>
+            Discover other skills connected through shared career paths.
+        </p>
+    </section>
+
+    <section class="section">
+
+        <h2>Related Skills</h2>
+
+        <div class="job-grid">
+
+            {% for item in connections %}
+            <article class="job-card">
+
+                <h3>{{ item.related_skill }}</h3>
+
+                <p>
+                    Shared jobs:
+                    <strong>{{ item.shared_jobs }}</strong>
+                </p>
+
+                <span class="skill secondary">
+                    Connected through {{ item.skill }}
+                </span>
+
+            </article>
+
+            {% else %}
+                <p>No related skills found.</p>
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>SkillGraph · Powered by CognoDB</p>
+</footer>
+
+</body>
+</html>
