@@ -1,19 +1,14 @@
-Yes 👍 **README.md Notepad-ல் paste செய்ய வேண்டிய content** இதுதான். ஆனால் ஒரு முக்கிய correction: `README`-ல் உங்கள் real password/secret **எதையும் paste செய்யக்கூடாது**.
-
-Notepad-ல் இருக்கும் content-ஐ முழுவதும் delete செய்து கீழே உள்ளதை paste செய்யுங்கள்:
-
-````markdown
-# SkillGraph
+SkillGraph
 
 A graph-powered career discovery application built with Flask and CognoDB.
 
 SkillGraph helps users understand the relationship between their skills and potential career paths. It uses a graph database to connect people, skills, and jobs.
 
-## Overview
+Overview
 
 SkillGraph analyzes a user's skills and recommends suitable career paths based on the skills required by different jobs.
 
-### Example Results
+Example Results
 
 | Career | Match |
 |---|---:|
@@ -23,7 +18,7 @@ SkillGraph analyzes a user's skills and recommends suitable career paths based o
 | Full Stack Developer | 66.7% |
 | Backend Developer | 60% |
 
-## Why a Graph Database?
+Why a Graph Database?
 
 The main value of SkillGraph comes from relationships between entities.
 
@@ -534,4 +529,22 @@ Ctrl + S → Close
 
 powershell
 dir
+## Screenshots
 
+### 1. Career Graph Explorer
+
+The main application page shows the user's skills and recommended careers based on skill matches.
+
+![Career Graph Explorer](screenshots/home.png)
+
+### 2. Career Details
+
+The career details page displays the skills required for a selected career.
+
+![Career Details](screenshots/career.png)
+
+### 3. Graph Explorer
+
+The Graph Explorer visualizes relationships between skills and careers, including connected jobs and related skills.
+
+![Graph Explorer](screenshots/graph.png)
